@@ -1,0 +1,96 @@
+# 0103CS221074
+# ANSHIKA BEOHAR
+
+#Registration credentials are stored in the form of list and dictionary
+username=['Anshika', 'Amisha', 'Aakarsh', 'Rohan', 'Sohan'];
+password={'Anshika':'ans123', 'Amisha':'ami123', 'Aakarsh':'aak123','Rohan':'roh123', 'Sohan':'soh123'};
+email={'Anshika':'ans@xyz.com', 'Amisha':'ami@xyz.com', 'Aakarsh':'aak@xyz.com','Rohan':'roh@xyz.com', 'Sohan':'soh@xyz.com'}
+contact={'Anshika':'9998887776', 'Amisha':'8887776665', 'Aakarsh':'7776665554','Rohan':'6665554443', 'Sohan':'5554443332'};
+age={'Anshika':20, 'Amisha':20, 'Aakarsh':19,'Rohan':32, 'Sohan':25};
+
+#DSA
+dsa_que={1:"The minimum number of comparisons required to determine if an integer appears more than n/2 times in a sorted array of n integers is: A) Θ(n) B)) Θ(logn) C) Θ(n*logn) D)Θ(1)",2:"Consider an array consisting of –ve and +ve numbers. What would be the worst case time complexity of an algorithm to segregate the numbers having same sign altogether i.e all +ve on one side and then all -ve on the other ? A)) O(N) B) O(N Log N) C) O(N * N) D) O(N Log Log N)",3:"Let A[1...n] be an array of n distinct numbers. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A. What is the expected number of inversions in any permutation on n elements ? A) n(n-1)/2 B)) n(n-1)/4 C) n(n+1)/4 D) 2n[logn]",4:"Consider a two dimensional array A[20][10]. Assume 4 words per memory cell, the base address of array A is 100, elements are stored in row-major order and first element is A[0][0]. What is the address of A[11][5] ? A)) 560 B) 460 C) 570 D) 575",5:"Which of the following correctly declares an array? A)) int geeks[20]; B) int geeks; C) geeks{20}; D) array geeks[20];" }
+dsa_ans={1:'B',2:'A',3:'B',4:'A',5:'A'}
+
+#DBMS
+dbms_que={1:"What is the full form of DBMS? a) Data of Binary Management System b)) Database Management System c) Database Management Service d) Data Backup Management System",2:"What is a database? a) Organized collection of information that cannot be accessed, updated, and managed b) Collection of data or information without organizing c)) Organized collection of data or information that can be accessed, updated, and managed d) Organized collection of data that cannot be updated",3:"What is DBMS? a) DBMS is a collection of queries b) DBMS is a high-level language c) DBMS is a programming language d)) DBMS stores, modifies and retrieves data",4:"Who created the first DBMS? a) Edgar Frank Codd b)) Charles Bachman c) Charles Babbage d) Sharon B. Codd",5:"Which type of data can be stored in the database? a) Image oriented data b) Text, files containing data c) Data in the form of audio or video d)) All of the above"}
+dbms_ans={1:'b',2:'c',3:'d',4:'b',5:'d'}
+
+#Python
+py_que={1:"Who developed Python Programming Language? a) Wick van Rossum b) Rasmus Lerdorf c)) Guido van Rossum d) Niene Stom",2:"Which type of Programming does Python support? a) object-oriented programming b) structured programming c) functional programming d)) all of the mentioned",3:"Is Python case sensitive when dealing with identifiers? a) no b)) yes c) machine dependent d) none of the mentioned",4:"Which of the following is the correct extension of the Python file? a) .python b) .pl c)) .py d) .p",5:"Is Python code compiled or interpreted? a)) Python code is both compiled and interpreted b) Python code is neither compiled nor interpreted c) Python code is only compiled d) Python code is only interpreted"}
+py_ans={1:'c',2:'d',3:'b',4:'c',5:'a'}
+
+print("Enter 1 for Registration, 2 for log in, 3 for change password, 4 for exit");
+option = input("Enter you choice ")
+if option=='1':
+  user=input("Enter your username:")
+  pwd=input("Enter your password:")
+  emailid=input("Enter your email:")
+  phone=input("Enter your contact number:")
+  ageuser=int(input("Enter your age:"))
+
+  if user in username or emailid in email or phone in contact:
+    print("User already exists. Please log in!")
+
+  elif phone.isdigit() and len(phone)==10:
+    username.append(user)
+    password[user]=pwd
+    contact[user]=phone
+    email[user]=emailid
+    age[user]=ageuser
+    print("Registered successfully! Kindly login to attempt quiz.")
+  else:
+    print("Enter valid Credentials")
+elif option=='2':
+  user=input("Enter your username:")
+  if user in username:
+    pwd=input("Enter your password:")
+    if pwd==password[user]:
+      print("Logged in successfully!")
+      print("Select your subject: 1=> DSA, 2=> DBMS, 3=> Python")
+      choice=input()
+      if choice=='1':
+        #dsa
+        count=int(0)
+        for i in range (1,6):
+          print(dsa_que[i])
+          var=input("Enter you answer:")
+          if var.upper()==dsa_ans[i]:
+            count+=1
+        print("Your score is ",count)
+      elif choice=='2':
+        #dbms
+        count=int(0)
+        for i in range (1,6):
+          print(dbms_que[i])
+          var=input("Enter you answer:")
+          if var.lower()==dbms_ans[i]:
+            count+=1
+        print("Your score is ",count)
+      elif choice=='3':
+        #python
+        count=int(0)
+        for i in range (1,6):
+          print(py_que[i])
+          var=input("Enter you answer:")
+          if var.lower()==py_ans[i]:
+            count+=1
+        print("Your score is ",count)
+      else:
+        print("Enter valid choice")
+    else:
+      print("Wrong password!")
+  else:
+      print("User not found!")
+elif option=='3':
+  user=input("Enter your username:")
+  if user in username:
+    pwd=input("Create new password:")
+    password[user]=pwd
+    print("Password changed successfully!")
+  else:
+    print("User not found")
+elif option=='4':
+  print("Thanks for visiting!")
+else:
+  print("Enter correct option!")
